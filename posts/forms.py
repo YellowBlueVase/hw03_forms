@@ -13,3 +13,4 @@ class PostForm(ModelForm):
         if data == '':
             raise forms.ValidationError('Пожалуйста, заполните поле')
         return data
+        
