@@ -1,6 +1,5 @@
-from django.contrib.auth import login
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import Group, Post, User
+from .models import Group, Post
 from .forms import PostForm
 from django.contrib.auth.decorators import login_required
 
@@ -25,6 +24,7 @@ def new_post(request):
             post.author = request.user
             post.save()
             return redirect("index")
-        return render(request, "new_post.html", {"form":form})
+        return render(request, "new_post.html", {"form": form})
     form = PostForm()
-    return render(request, "new_post.html", {"form":form})
+    return render(request, "new_post.html", {"form": form})
+    
