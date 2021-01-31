@@ -27,4 +27,3 @@ def new_post(request):
         return render(request, "new_post.html", {"form": form})
     form = PostForm()
     return render(request, "new_post.html", {"form": form})
-    

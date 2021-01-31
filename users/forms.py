@@ -20,7 +20,7 @@ class ContactForm(forms.ModelForm):
     subject = forms.CharField(max_length=100)
     body = forms.CharField(widget=Textarea, validators=[validate_not_empty])
     is_answered = forms.BooleanField(initial=False)
-    
+
     class Meta:
         # на основе какой модели создаётся класс формы
         model = Contact
