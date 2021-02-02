@@ -38,6 +38,7 @@ def new_post(request):
     return render(request, "new_post.html", {"form": form})
 
 
+# ДОБАВИЛ НОВЫЕ ФУНКЦИИ + ТЕМПЛЕЙЕТЫ ДЛЯ УРОКОВ ПО ПРОФИЛЮ ПОЛЬЗОВАТЕЛЯ В СПРИНТЕ 5
 # Страницу профайла пользователя с постами. Добавьте на неё паджинатор, количество записей автора вы умеете вычислять
 def profile(request, username):
     author_posts = Post.objects.all().filter(author=username)
