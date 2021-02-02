@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect
-from django.views.generic import CreateView
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
-from .forms import CreationForm, ContactForm
+from django.views.generic import CreateView
+
+from .forms import ContactForm, CreationForm
 from .models import Contact
+
 
 class SignUp(CreateView):
     form_class = CreationForm

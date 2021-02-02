@@ -1,6 +1,7 @@
-from django.test import TestCase, Client
-from posts.models import Post, Group, User
+from django.test import Client, TestCase
 from django.utils import timezone
+
+from posts.models import Group, Post, User
 
 
 class PostURLTests(TestCase):

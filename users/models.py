@@ -1,5 +1,7 @@
 from django.db import models
+
 from .validators import validate_not_empty
+
 
 # Create your models here.
 class Contact(models.Model):
