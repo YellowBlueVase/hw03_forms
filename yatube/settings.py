@@ -25,7 +25,12 @@ SECRET_KEY = '(f672*hffj#lv13=+p0(bobe%0g32_jzk+mck#r+sgq1g=zy*o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "[::1]",
+    "testserver",
+]
 
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
@@ -36,6 +41,7 @@ EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 INSTALLED_APPS = [
     'users',
     'posts',
+    'about',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

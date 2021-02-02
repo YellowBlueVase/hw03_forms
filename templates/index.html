@@ -3,7 +3,7 @@
 {% block header %}Последние обновления на сайте{% endblock %}
 {% block content %}
 
-    {% for post in posts %}
+    {% for post in page %}
     <h3>
         Автор: 
         {% if post.author.get_full_name %}
@@ -16,4 +16,6 @@
     {% if not forloop.last %}<hr>{% endif %}
     {% endfor %}
 
+    {% include "paginator.html" %}
+    
 {% endblock %} 

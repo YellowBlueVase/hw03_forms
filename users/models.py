@@ -8,3 +8,6 @@ class Contact(models.Model):
     subject = models.CharField(max_length=100)
     body = models.TextField(validators=[validate_not_empty])
     is_answered = models.BooleanField(default=False) 
+
+    def __str__(self):
+        return self.name
