@@ -15,7 +15,7 @@
     <p>{{ post.text|linebreaksbr }}</p>
     {% if not forloop.last %}<hr>{% endif %}
     {% endfor %}
-
-    {% include "paginator.html" %}
+    {# Тут тоже нужен полный путь до шаблона #}
+    {% include "posts/paginator.html" %}
     
 {% endblock %} 

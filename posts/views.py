@@ -13,8 +13,9 @@ def index(request):
     page = paginator.get_page(page_number)
     return render(
         request,
-        "index.html",
-        {'page': page,}
+        "index.html", #если спрятал шаблон в подпапку,
+        # то надо указывать отностильный пусть в это подпапку
+        {'page': page, 'paginator':paginator} # тут был не указан пагинатор
     )
 
 
@@ -41,10 +42,16 @@ def new_post(request):
 # ДОБАВИЛ НОВЫЕ ФУНКЦИИ + ТЕМПЛЕЙЕТЫ ДЛЯ УРОКОВ ПО ПРОФИЛЮ ПОЛЬЗОВАТЕЛЯ В СПРИНТЕ 5
 # Страницу профайла пользователя с постами. Добавьте на неё паджинатор, количество записей автора вы умеете вычислять
 def profile(request, username):
+    # Получить автор через get_object_or_404
+    # Получить post_list с помощью related_name от автора
+    # получить пагинатор
+    # получить page_namber
+    # получить page
+    # передать в шаблон page, paginator, author
     author_posts = Post.objects.all().filter(author=username)
     count_posts = author_posts.count()
     full_name = request.user.get_full_name()
-    return render(request, "profile.html", {
+    return render(request, "posts/profile.html", {
         "username": username,
         "count_posts": count_posts,
         "full_name": full_name,

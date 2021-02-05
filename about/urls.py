@@ -6,6 +6,6 @@ from . import views
 app_name = "about"
 
 urlpatterns = [
-    path("author/", views.AboutAuthorView.as_view(), name="about"),
+    path("author/", views.AboutAuthorView.as_view(), name="author"), #изменено свойство name
     path("tech/", views.AboutTechView.as_view(), name='tech'),
 ]

@@ -10,9 +10,9 @@ handler500 = "posts.views.server_error" #noqa
 # дополнительно в users/urls.py добавил app_name="users", по аналогии в posts/urls.py и about/urls.py
 # все это сделал, чтобы заработал код в posts/tests/test_views.py и test_forms.py в части reverse() в соответствии с заданием
 urlpatterns = [
-    path("auth/", include(("users.urls", "users"), namespace="users")),
+    path("auth/", include("users.urls")),
     path("auth/", include("django.contrib.auth.urls")),
-    path("", include(("posts.urls", "posts"), namespace="posts")),
     path("admin/", admin.site.urls),
-    path("about/", include(("about.urls", "about"), namespace="about"))
+    path("", include("posts.urls")),
+    path("about/", include("about.urls", namespace='about')),
 ]
