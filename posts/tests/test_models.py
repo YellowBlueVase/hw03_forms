@@ -44,7 +44,7 @@ class GroupModelTest(TestCase):
         group = GroupModelTest.group
         self_name_target = group.title
         self_name_actual = str(group)
-        self.assertEquals(self_name_target, self_name_actual)  
+        self.assertEquals(self_name_target, self_name_actual)
 
 
 class PostModelTest(TestCase):
@@ -89,4 +89,4 @@ class PostModelTest(TestCase):
         post = PostModelTest.post
         length_self_name_target = 15
         length_self_name_actual = (len(str(post)))
-        self.assertIs(length_self_name_actual <= length_self_name_target, True) 
+        self.assertIs(length_self_name_actual <= length_self_name_target, True)

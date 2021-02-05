@@ -15,7 +15,7 @@ class PostURLTests(TestCase):
             author=User.objects.create_user(username='Donkey'),
             group=Group.objects.create(title="Monkeys", slug="monkeys", description="some description"),
         )
-    
+
     def setUp(self):
         # Создаем экземпляр клиента
         self.guest_client = Client()
@@ -36,7 +36,7 @@ class PostURLTests(TestCase):
             response = self.authorized_client.get(page)
             with self.subTest():
                 self.assertEqual(response.status_code, 200)
-    
+
     def test_private_urls_redirect_anonymous(self):
         for page in self.private_pages:
             response = self.guest_client.get(page, follow=True)
@@ -52,4 +52,4 @@ class PostURLTests(TestCase):
         for template, reverse_name in templates_url_names.items():
             with self.subTest():
                 response = self.authorized_client.get(reverse_name)
-                self.assertTemplateUsed(response, template) 
+                self.assertTemplateUsed(response, template)
