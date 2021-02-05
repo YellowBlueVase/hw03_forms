@@ -13,10 +13,9 @@ def index(request):
     page = paginator.get_page(page_number)
     return render(
         request,
-        "index.html", #если спрятал шаблон в подпапку,
-        # то надо указывать отностильный пусть в это подпапку
-        {'page': page, 'paginator':paginator} # тут был не указан пагинатор
-    )
+        "index.html",
+        {'page': page, 'paginator':paginator}
+        )
 
 
 def group_posts(request, slug):
@@ -39,15 +38,7 @@ def new_post(request):
     return render(request, "new_post.html", {"form": form})
 
 
-# ДОБАВИЛ НОВЫЕ ФУНКЦИИ + ТЕМПЛЕЙЕТЫ ДЛЯ УРОКОВ ПО ПРОФИЛЮ ПОЛЬЗОВАТЕЛЯ В СПРИНТЕ 5
-# Страницу профайла пользователя с постами. Добавьте на неё паджинатор, количество записей автора вы умеете вычислять
 def profile(request, username):
-    # Получить автор через get_object_or_404
-    # Получить post_list с помощью related_name от автора
-    # получить пагинатор
-    # получить page_namber
-    # получить page
-    # передать в шаблон page, paginator, author
     author_posts = Post.objects.all().filter(author=username)
     count_posts = author_posts.count()
     full_name = request.user.get_full_name()
@@ -57,14 +48,11 @@ def profile(request, username):
         "full_name": full_name,
     })
 
-# Страницу просмотра отдельной записи
+
 def post_view(request, username, post_id):
     return render(request, "post.html", {})
 
-#Страницу с формой редактирования существующей записи: расширьте готовый шаблон с формой создания поста. 
-# В зависимости от ситуации заголовок формы должен меняться: «Добавить запись» или «Редактировать запись». 
-# Надпись на кнопке отправки формы тоже должна зависеть от операции: «Добавить» для новой записи и «Сохранить» 
-# — для редактирования.
+
 def post_edit(request, username, post_id):
     if username == Post.objects.get(id=post_id).author:
         return render(request, "new_post.html", {})
@@ -73,15 +61,13 @@ def post_edit(request, username, post_id):
 
 
 def page_not_found(request, exception):
-    # Переменная exception содержит отладочную информацию, 
-    # выводить её в шаблон пользователской страницы 404 мы не станем
     return render(
-        request, 
-        "misc/404.html", 
-        {"path": request.path}, 
+        request,
+        "misc/404.html",
+        {"path": request.path},
         status=404
     )
 
 
 def server_error(request):
-    return render(request, "misc/500.html", status=500) 
+    return render(request, "misc/500.html", status=500)

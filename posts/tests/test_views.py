@@ -1,5 +1,4 @@
 from django import forms
-from django.contrib.auth import get_user_model
 from django.forms.widgets import Textarea
 from django.test import Client, TestCase
 from django.urls import reverse
@@ -24,8 +23,6 @@ class PostPagesTests(TestCase):
         self.authorized_client = Client()
         self.authorized_client.force_login(self.user)
 
-    # !!! Вот этот дурацкий код, из-за которого решил все эти манипуляции провести. 
-    # Короче не смог выполнить задания по test_views.py и test_forms.py
     def test_pages_uses_correct_template(self):
         templates_pages_names = {
             'index.html': reverse('posts:index'),
@@ -35,15 +32,14 @@ class PostPagesTests(TestCase):
         for template, reverse_name in templates_pages_names.items():
             with self.subTest(reverse_name=reverse_name):
                 response = self.authorized_client.get(reverse_name)
-                self.assertTemplateUsed(response, template) 
+                self.assertTemplateUsed(response, template)
 
-  # !!! И вот еще этот reverse
     def test_new_post_page_show_correct_context(self):
         response = self.authorized_client.get(reverse('posts:new_post'))
         form_fields = {
-            'text': forms.fields.CharField(widget=Textarea),         
+            'text': forms.fields.CharField(widget=Textarea),
             'group': forms.fields.ChoiceField,
-        }        
+        }
 
         for value, expected in form_fields.items():
             with self.subTest(value=value):
