@@ -15,7 +15,8 @@ def index(request):
         request,
         "index.html",
         {'page': page,
-        'paginator': paginator}
+        'paginator': paginator
+        }
     )
 
 
