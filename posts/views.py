@@ -33,9 +33,9 @@ def new_post(request):
             post.author = request.user
             post.save()
             return redirect("index")
-        return render(request, "new_post.html", {"form": form})
+        return render(request, "posts/new_post.html", {"form": form})
     form = PostForm()
-    return render(request, "new_post.html", {"form": form})
+    return render(request, "posts/new_post.html", {"form": form})
 
 
 def profile(request, username):
@@ -55,7 +55,7 @@ def post_view(request, username, post_id):
 
 def post_edit(request, username, post_id):
     if username == Post.objects.get(id=post_id).author:
-        return render(request, "new_post.html", {})
+        return render(request, "posts/new_post.html", {})
     else:
         pass
 
