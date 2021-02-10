@@ -34,4 +34,4 @@ class PostCreateFormTests(TestCase):
             follow=True
         )
         self.assertRedirects(response, '/new/')
-        self.assertEqual(Post.objects.count(), posts_count+1)
+        self.assertEqual(Post.objects.count(), posts_count + 1)
